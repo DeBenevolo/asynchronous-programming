@@ -5,7 +5,7 @@ package com.example.asynchronousprogramming.samples
 
 import kotlinx.coroutines.*
 
-fun main2() = runBlocking {
+fun mai2() = runBlocking {
     coroutineScope{
         launch{
             delay(500)
@@ -18,7 +18,17 @@ fun main2() = runBlocking {
 }
 
 fun main() = runBlocking<Unit> {
-    launch(CoroutineName("child")) {
-        println("My context is $coroutineContext}")
+   val outer = launch{
+       launch(Dispatchers.IO){
+            repeat(10){
+                print('.')
+                delay(100)
+            }
+       }
     }
+    delay(200)
+    outer.cancel()
+    outer.join()
+    println("Finish")
+
 }

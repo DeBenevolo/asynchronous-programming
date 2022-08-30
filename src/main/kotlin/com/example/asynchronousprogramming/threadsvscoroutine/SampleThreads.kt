@@ -1,6 +1,5 @@
 package com.example.asynchronousprogramming.samples
 
-import kotlinx.coroutines.*
 import kotlin.concurrent.thread
 
 fun main(){
